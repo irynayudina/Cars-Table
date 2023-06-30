@@ -17,7 +17,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (cars) {
+    if (cars.length > 0) {
       setIsLoading(false);
     }
   }, [cars]);
