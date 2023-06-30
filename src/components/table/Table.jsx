@@ -1,6 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './Table.css'
-const Table = ({cars}) => {
+import { useState } from 'react';
+const Table = ({ cars }) => {
+    const portionSize = 10;
+    const [pageNum, setPageNum] = useState(10)
+    const [displayCars, setDisplayCars] = useState([]);
+
+    const loadMore = () => {
+        const carsPortion = cars.slice(pageNum, pageNum + portionSize);
+        setDisplayCars([...displayCars, ...carsPortion]);
+        setPageNum((prev) => prev + portionSize);
+    }
+    
+    useEffect(() => {
+        setDisplayCars(cars.slice(0, 0 + portionSize));
+    }, [cars])
+    
   return (
     <div className="table-container">
       <table>
@@ -17,12 +32,12 @@ const Table = ({cars}) => {
           </tr>
         </thead>
         <tbody>
-          {cars?.map((car) => (
+          {displayCars?.map((car) => (
             <tr key={car.id}>
               <td>{car.car}</td>
               <td>{car.car_model}</td>
               <td>{car.car_vin}</td>
-              <td className='color-car'>
+              <td className="color-car">
                 <div
                   className="color-cirle"
                   style={{ backgroundColor: `${car.car_color}` }}
@@ -37,6 +52,9 @@ const Table = ({cars}) => {
           ))}
         </tbody>
       </table>
+      <button className="load-more" onClick={loadMore}>
+        Load more
+      </button>
     </div>
   );
 }
