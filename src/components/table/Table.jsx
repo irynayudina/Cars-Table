@@ -5,16 +5,23 @@ const Table = ({ cars }) => {
   const portionSize = 10;
   const [pageNum, setPageNum] = useState(10);
   const [displayCars, setDisplayCars] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const loadMore = () => {
+    const loadMore = () => {
+    setIsLoading(true);
     const carsPortion = cars.slice(pageNum, pageNum + portionSize);
     setDisplayCars([...displayCars, ...carsPortion]);
     setPageNum((prev) => prev + portionSize);
   };
 
   useEffect(() => {
+    setIsLoading(true);
     setDisplayCars(cars.slice(0, 0 + portionSize));
   }, [cars]);
+    
+  useEffect(() => {
+    setIsLoading(false);
+  }, [displayCars]);
 
     return (
       <div className="table-container">
@@ -52,7 +59,7 @@ const Table = ({ cars }) => {
             ))}
           </tbody>
         </table>
-        <button className="load-more" onClick={loadMore}>
+        <button className="load-more" onClick={loadMore} disabled={isLoading}>
           Load more
         </button>
       </div>
