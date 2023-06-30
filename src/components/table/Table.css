@@ -1,0 +1,22 @@
+.table-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+th, td {
+  padding: 1rem;
+}
+td{
+    border: 1px solid #646cff;
+}
+.color-car{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 3rem;
+}
+.color-cirle{
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+}
