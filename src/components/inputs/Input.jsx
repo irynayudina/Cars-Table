@@ -26,7 +26,7 @@ const Input = ({
   }, [valueInp]);
   
   return (
-    <div class="input-wrapper">
+    <div className="input-wrapper">
       <input
         type={typeProp}
         id={idProp}

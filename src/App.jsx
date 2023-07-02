@@ -31,7 +31,7 @@ function App() {
       ) : (
         <>
           <div className="card">
-            <SearchBar />
+              <SearchBar setCars={setCars} />
           </div>
           <div className="card">
             <Table cars={cars} />

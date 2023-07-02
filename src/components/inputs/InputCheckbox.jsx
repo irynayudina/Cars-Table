@@ -6,7 +6,7 @@ const InputCheckbox = ({ idProp, labelProp, isChecked, setIsChecked }) => {
     setIsChecked(event.target.checked);
   };
   return (
-    <div class="checkbox-wrapper">
+    <div className="checkbox-wrapper">
       <input
         type="checkbox"
         id={idProp}

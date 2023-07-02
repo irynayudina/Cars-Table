@@ -1,21 +1,38 @@
 import React, { useState } from "react";
 import './SearchBar.css'
+import filterCars from "../../utils/filterCars";
+import loadCars from "../../utils/loadCars";
 import Input from "../inputs/Input";
 import InputCheckbox from "../inputs/InputCheckbox";
 
-const SearchBar = () => {
+const SearchBar = ({ setCars }) => {
   const [company, setCompany] = useState("")
   const [model, setModel] = useState("");
   const [vin, setVin] = useState("");
   const [color, setColor] = useState("");
-  const [yearFrom, setYearFrom] = useState();
-  const [yearTo, setYearTo] = useState();
-  const [priceFrom, setPriceFrom] = useState();
-  const [priceTo, setPriceTo] = useState();
+  const [yearFrom, setYearFrom] = useState("");
+  const [yearTo, setYearTo] = useState("");
+  const [priceFrom, setPriceFrom] = useState("");
+  const [priceTo, setPriceTo] = useState("");
   const [isAvailable, setIsAvailable] = useState(false);
     
   const handleSubmit = (event) => {
-    // event.preventDefault();
+    event.preventDefault();
+    loadCars().then((cars) => {
+      const filteredCars = filterCars(
+        cars,
+        company,
+        model,
+        vin,
+        color,
+        yearFrom,
+        yearTo,
+        priceFrom,
+        priceTo,
+        isAvailable
+      );
+      setCars(filteredCars);
+    });
   };
   const resetSearchBar = () => {
     setCompany("");
@@ -27,6 +44,9 @@ const SearchBar = () => {
     setPriceFrom("");
     setPriceTo("");
     setIsAvailable(false);
+    loadCars().then((cars) => {
+      setCars(cars);
+    });
   }
   return (
     <div className="searchbar-container">
@@ -105,4 +125,3 @@ const SearchBar = () => {
 }
 
 export default SearchBar
-

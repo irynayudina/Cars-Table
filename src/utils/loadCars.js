@@ -16,7 +16,7 @@ const fetchCars = async () => {
 };
 
 const loadCars = async () => {
-  if (sessionStorage.length === 0) {
+  if (sessionStorage.getItem("cars") === null) {
     console.log("Fetching example data");
     let cars = await fetchCars();
     if (!cars) {
