@@ -25,10 +25,10 @@ input:hover {
 
 .input-wrapper label {
   position: absolute;
-  /* position: relative; */
   top: -15px;
   left: 1rem;
-  background-color: white;
+  background-color: inherit;
+  border-radius: 2px;
   padding: 0 5px;
   display: none;
 }
