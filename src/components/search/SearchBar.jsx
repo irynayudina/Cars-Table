@@ -8,8 +8,10 @@ const SearchBar = () => {
   const [model, setModel] = useState("");
   const [vin, setVin] = useState("");
   const [color, setColor] = useState("");
-  const [year, setYear] = useState();
-  const [price, setPrice] = useState();
+  const [yearFrom, setYearFrom] = useState();
+  const [yearTo, setYearTo] = useState();
+  const [priceFrom, setPriceFrom] = useState();
+  const [priceTo, setPriceTo] = useState();
   const [isAvailable, setIsAvailable] = useState(false);
     
   const handleSubmit = (event) => {
@@ -48,19 +50,35 @@ const SearchBar = () => {
         />
         <Input
           typeProp="number"
-          idProp="year"
-          placeholderProp="Year..."
-          labelProp="Year..."
-          valueInp={year}
-          setValueInp={setYear}
+          idProp="yearFrom"
+          placeholderProp="Year from..."
+          labelProp="Year from..."
+          valueInp={yearFrom}
+          setValueInp={setYearFrom}
         />
         <Input
           typeProp="number"
-          idProp="price"
-          placeholderProp="Price..."
-          labelProp="Price..."
-          valueInp={price}
-          setValueInp={setPrice}
+          idProp="yearTo"
+          placeholderProp="Year to..."
+          labelProp="Year to..."
+          valueInp={yearTo}
+          setValueInp={setYearTo}
+        />
+        <Input
+          typeProp="number"
+          idProp="priceFrom"
+          placeholderProp="Price from..."
+          labelProp="Price from..."
+          valueInp={priceFrom}
+          setValueInp={setPriceFrom}
+        />
+        <Input
+          typeProp="number"
+          idProp="priceTo"
+          placeholderProp="Price to..."
+          labelProp="Price to..."
+          valueInp={priceTo}
+          setValueInp={setPriceTo}
         />
         <InputCheckbox
           idProp="availability"
@@ -69,6 +87,7 @@ const SearchBar = () => {
           setIsChecked={setIsAvailable}
         />
         <button type="submit">Search</button>
+        <button type="button">Reset</button>
       </form>
     </div>
   );

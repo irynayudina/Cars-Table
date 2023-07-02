@@ -1,10 +1,10 @@
 .input-wrapper {
   position: relative;
-  width: 270px;
+  width: 200px;
   margin-top: 15px;
 }
 .checkbox-wrapper {
-  width: auto;
+  width: fit-content;
 }
 
 .input-wrapper input {

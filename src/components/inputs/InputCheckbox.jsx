@@ -1,4 +1,5 @@
 import React from "react";
+import "./Input.css";
 
 const InputCheckbox = ({ idProp, labelProp, isChecked, setIsChecked }) => {
   const handleCheckboxChange = (event) => {
