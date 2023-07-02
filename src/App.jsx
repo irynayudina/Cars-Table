@@ -3,12 +3,14 @@ import "./App.css";
 import Table from './components/table/Table';
 import SearchBar from './components/search/SearchBar';
 import Loading from "./components/loading/Loading";
+import Modal from './components/modals/Modal';
 import loadCars from './utils/loadCars';
 
 function App() {
   const [cars, setCars] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-
+  // const [showModal, setShowModal] = useState(false);
+  const [closePopup, setClosePopup] = useState();
 
   useEffect(() => {
     loadCars().then((cars) => {
@@ -22,6 +24,13 @@ function App() {
     }
   }, [cars]);
 
+  const openModal = () => {
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
   
   return (
     <>
@@ -31,7 +40,7 @@ function App() {
       ) : (
         <>
           <div className="card">
-              <SearchBar setCars={setCars} />
+            <SearchBar setCars={setCars} />
           </div>
           <div className="card">
             <Table cars={cars} />

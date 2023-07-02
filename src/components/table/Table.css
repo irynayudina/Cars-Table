@@ -10,6 +10,10 @@ th, td {
 td{
   border: 1px solid #646cff;
 }
+.action:hover {
+  color: #DC3545;
+  cursor: pointer;
+}
 thead tr{
   background-color: #646cff;
 }

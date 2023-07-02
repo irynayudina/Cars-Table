@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Table.css";
+import Modal from "../modals/Modal";
 
 const Table = ({ cars }) => {
   const portionSize = 10;
@@ -54,7 +55,16 @@ const Table = ({ cars }) => {
                 <td>{car.car_model_year}</td>
                 <td>{car.price}</td>
                 <td>{car.availability.toString()}</td>
-                <td>-Edit -Delete</td>
+                <td>
+                  <Modal>
+                    <span className="action">-Edit</span>
+                    <div>edit</div>
+                  </Modal>
+                  <Modal>
+                    <span className="action">-Delete</span>
+                    <div>delete</div>
+                  </Modal>
+                </td>
               </tr>
             ))}
           </tbody>
