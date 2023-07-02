@@ -8,7 +8,10 @@ th, td {
   padding: 1rem;
 }
 td{
-    border: 1px solid #646cff;
+  border: 1px solid #646cff;
+}
+thead tr{
+  background-color: #646cff;
 }
 .color-car{
     display: flex;

@@ -1,0 +1,52 @@
+.input-wrapper {
+  position: relative;
+  width: 270px;
+  margin-top: 15px;
+}
+.checkbox-wrapper {
+  width: auto;
+}
+
+.input-wrapper input {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  transition: border-color 0.25s;
+  width: 200px;
+  box-sizing: border-box;
+}
+
+input:hover {
+  border-color: #646cff;
+}
+
+.input-wrapper label {
+  position: absolute;
+  /* position: relative; */
+  top: -15px;
+  left: 1rem;
+  background-color: white;
+  padding: 0 5px;
+  display: none;
+}
+
+.input-wrapper input:focus + label {
+  display: block;
+}
+
+.input-wrapper input.filled + label {
+  display: block;
+}
+
+input:focus,
+input:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+input[type=checkbox]{
+  width: 1rem;
+  height: 1rem;
+}

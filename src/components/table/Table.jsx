@@ -3,7 +3,7 @@ import "./Table.css";
 
 const Table = ({ cars }) => {
   const portionSize = 10;
-  const [pageNum, setPageNum] = useState(10);
+  const [pageNum, setPageNum] = useState(portionSize);
   const [displayCars, setDisplayCars] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
