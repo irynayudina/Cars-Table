@@ -27,10 +27,15 @@ input:hover {
   position: absolute;
   top: -15px;
   left: 1rem;
-  background-color: inherit;
+  background-color: white;
   border-radius: 2px;
   padding: 0 5px;
   display: none;
+}
+@media (prefers-color-scheme: dark) {
+  .input-wrapper label{
+    background-color: black;
+  }
 }
 
 .input-wrapper input:focus + label {
