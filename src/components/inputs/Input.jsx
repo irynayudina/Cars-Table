@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import './Input.css'
 const Input = ({
   typeProp="text",
@@ -18,6 +18,13 @@ const Input = ({
       setFilled("");
     }
   };
+
+  useEffect(() => {
+    if (valueInp === "") {
+      setFilled("");
+    }
+  }, [valueInp]);
+  
   return (
     <div class="input-wrapper">
       <input

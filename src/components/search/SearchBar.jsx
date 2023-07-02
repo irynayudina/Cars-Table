@@ -17,6 +17,17 @@ const SearchBar = () => {
   const handleSubmit = (event) => {
     // event.preventDefault();
   };
+  const resetSearchBar = () => {
+    setCompany("");
+    setModel("");
+    setVin("");
+    setColor("");
+    setYearFrom("");
+    setYearTo("");
+    setPriceFrom("");
+    setPriceTo("");
+    setIsAvailable(false);
+  }
   return (
     <div className="searchbar-container">
       <form onSubmit={handleSubmit}>
@@ -87,7 +98,7 @@ const SearchBar = () => {
           setIsChecked={setIsAvailable}
         />
         <button type="submit">Search</button>
-        <button type="button">Reset</button>
+        <button type="button" onClick={resetSearchBar}>Reset</button>
       </form>
     </div>
   );
