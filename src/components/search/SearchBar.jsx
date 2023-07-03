@@ -52,6 +52,8 @@ const SearchBar = ({ setCars }) => {
     sessionStorage.setItem("priceFrom", priceFrom);
     sessionStorage.setItem("priceTo", priceTo);
     sessionStorage.setItem("isAvailable", isAvailable);
+    sessionStorage.setItem("orderBy", orderBy);
+    sessionStorage.setItem("sortOrder", sortOrder);
   };
 
   const resetSearchBar = () => {
@@ -64,6 +66,8 @@ const SearchBar = ({ setCars }) => {
     setPriceFrom("");
     setPriceTo("");
     setIsAvailable(false);
+    setOrderBy("");
+    setSortOrder("");
     loadCars().then((cars) => {
       setCars(cars);
     });
@@ -75,7 +79,9 @@ const SearchBar = ({ setCars }) => {
     sessionStorage.removeItem("yearTo", yearTo);
     sessionStorage.removeItem("priceFrom", priceFrom);
     sessionStorage.removeItem("priceTo", priceTo);
-    sessionStorage.removeItem("isAvailable", isAvailable);
+    sessionStorage.removeItem("isAvailable");
+    sessionStorage.removeItem("orderBy");
+    sessionStorage.removeItem("sortOrder");
   };
 
   useEffect(() => {
@@ -88,6 +94,8 @@ const SearchBar = ({ setCars }) => {
     setPriceFrom(sessionStorage.getItem("priceFrom") || "");
     setPriceTo(sessionStorage.getItem("priceTo") || "");
     setIsAvailable(sessionStorage.getItem("isAvailable") === "true");
+    setOrderBy(sessionStorage.getItem("orderBy") || "");
+    setSortOrder(sessionStorage.getItem("sortOrder") || "");
     setFetchedStateFlag(true);
   }, []);
 
