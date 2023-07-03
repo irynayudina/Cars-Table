@@ -13,7 +13,7 @@ const InputCheckbox = ({ idProp, labelProp, isChecked, setIsChecked }) => {
         checked={isChecked}
         onChange={handleCheckboxChange}
       />
-      <label htmlFor={idProp}>{labelProp}</label>
+      <span>{labelProp}</span>
     </div>
   );
 };

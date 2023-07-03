@@ -37,8 +37,12 @@ const Modal = ({ children }) => {
     };
   }, [popupRef, triggerRef]);
   return (
-    <div >
-      <div onClick={handleShowPopup} ref={triggerRef}>
+    <div>
+      <div
+        onClick={handleShowPopup}
+        ref={triggerRef}
+        style={{ display: "inline-block" }}
+      >
         {trigger}
       </div>
       {showPopup && (

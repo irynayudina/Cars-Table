@@ -37,6 +37,11 @@
   padding: 1em;
 }
 
+.searchbar{
+  border: 1px solid #72e1ff80;
+  border-radius: 1rem;
+}
+
 .read-the-docs {
   color: #888;
 }
