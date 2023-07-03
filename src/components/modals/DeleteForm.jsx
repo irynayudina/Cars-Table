@@ -4,12 +4,13 @@ import InputCheckbox from "../inputs/InputCheckbox";
 import deleteCar from "../../utils/deleteCar";
 import findCarById from "../../utils/findCarById";
 
-const DeleteForm = ({ cars, setCars, id }) => {
+const DeleteForm = ({ cars, setCars, id, onClose }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const updatedCars = deleteCar(cars, id);
     sessionStorage.setItem("cars", JSON.stringify(updatedCars));
     setCars(updatedCars);
+    onClose();
   };
 
   const [car, setCar] = useState({

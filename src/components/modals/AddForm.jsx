@@ -3,7 +3,7 @@ import Input from '../inputs/Input';
 import InputCheckbox from '../inputs/InputCheckbox';
 import addCar from '../../utils/addCar';
 
-const AddForm = ({ cars, setCars }) => {
+const AddForm = ({ cars, setCars, onClose }) => {
   const [company, setCompany] = useState("");
   const [model, setModel] = useState("");
   const [vin, setVin] = useState("");
@@ -27,6 +27,7 @@ const AddForm = ({ cars, setCars }) => {
     );
     sessionStorage.setItem("cars", JSON.stringify(updatedCars));
     setCars(updatedCars);
+    onClose(); 
   };
   const resetForm = () => {
     setCompany("");

@@ -40,6 +40,7 @@ const Input = ({
         disabled={disabledProp}
         required={isRequired}
         min={minValue}
+        step="0.01"
       />
       <label htmlFor={idProp}>{labelProp}</label>
     </div>

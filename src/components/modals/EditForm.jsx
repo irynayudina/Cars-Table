@@ -5,7 +5,7 @@ import loadCars from "../../utils/loadCars";
 import findCarById from "../../utils/findCarById";
 import editCar from "../../utils/editCar";
 
-const EditForm = ({ id, cars, setCars }) => {
+const EditForm = ({ id, cars, setCars, onClose }) => {
   const [color, setColor] = useState("");
   const [price, setPrice] = useState("");
   const [isAvailable, setIsAvailable] = useState(false);
@@ -41,6 +41,7 @@ const EditForm = ({ id, cars, setCars }) => {
     const updatedCars = editCar(cars, id, color, price, isAvailable);
     sessionStorage.setItem("cars", JSON.stringify(updatedCars));
     setCars(updatedCars);
+    onClose();
   };
 
   return (

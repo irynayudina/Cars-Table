@@ -51,7 +51,7 @@ const Modal = ({ children }) => {
             <div className="popup-close" onClick={handleClosePopup}>
               &#10060;
             </div>
-            {content}
+            {React.cloneElement(content, { onClose: handleClosePopup })}
           </div>
         </div>
       )}
