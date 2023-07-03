@@ -2,7 +2,7 @@ import React from "react";
 import Input from "../inputs/Input";
 import InputCheckbox from "../inputs/InputCheckbox";
 
-const DeleteForm = () => {
+const DeleteForm = ({ id }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
   };

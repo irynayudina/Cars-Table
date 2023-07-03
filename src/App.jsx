@@ -36,11 +36,11 @@ function App() {
           <div className="card">
             <Modal>
               <button className="add-btn">Add a new car +</button>
-              <AddForm/>
+              <AddForm />
             </Modal>
           </div>
           <div className="card">
-            <Table cars={cars} />
+            <Table cars={cars} setCars={setCars} />
           </div>
         </>
       )}

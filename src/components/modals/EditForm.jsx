@@ -1,28 +1,48 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Input from "../inputs/Input";
 import InputCheckbox from "../inputs/InputCheckbox";
-const EditForm = () => {
-  const [company, setCompany] = useState("");
-  const [model, setModel] = useState("");
-  const [vin, setVin] = useState("");
+import loadCars from "../../utils/loadCars";
+import findCarById from "../../utils/findCarById";
+import editCar from "../../utils/editCar";
+
+const EditForm = ({ id, cars, setCars }) => {
   const [color, setColor] = useState("");
-  const [year, setYear] = useState("");
   const [price, setPrice] = useState("");
   const [isAvailable, setIsAvailable] = useState(false);
+  const [car, setCar] = useState({
+    price: "",
+    car_color: "",
+    availability: false,
+    car: "",
+    car_model: "",
+    car_vin: "",
+    car_model_year: "",
+  });
+
+  const loadCar = () => {
+    const foundCar = findCarById(cars, id);
+    setCar(foundCar);
+  };
+
+  useEffect(() => {
+    loadCar();
+  }, []);
+
+  useEffect(() => {
+    if (car && Object.keys(car).length !== 0) {
+      setPrice(Number(car.price.replace(/[^0-9.-]+/g, "")));
+      setColor(car.car_color);
+      setIsAvailable(car.availability);
+    }
+  }, [car]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    resetForm();
+    const updatedCars = editCar(cars, id, color, price, isAvailable);
+    sessionStorage.setItem("cars", JSON.stringify(updatedCars));
+    setCars(updatedCars);
   };
-  const resetForm = () => {
-    setCompany("");
-    setModel("");
-    setVin("");
-    setColor("");
-    setYear("");
-    setPrice("");
-    setIsAvailable(false);
-  };
+
   return (
     <div className="modal-form-container">
       <h2>Edit car</h2>
@@ -31,24 +51,21 @@ const EditForm = () => {
           idProp="companyAdd"
           placeholderProp="Company..."
           labelProp="Company..."
-          valueInp={company}
-          setValueInp={setCompany}
+          valueInp={car?.car}
           disabledProp={true}
         />
         <Input
           idProp="modelAdd"
           placeholderProp="Model..."
           labelProp="Model..."
-          valueInp={model}
-          setValueInp={setModel}
+          valueInp={car?.car_model}
           disabledProp={true}
         />
         <Input
           idProp="vinAdd"
           placeholderProp="VIN..."
           labelProp="VIN..."
-          valueInp={vin}
-          setValueInp={setVin}
+          valueInp={car?.car_vin}
           disabledProp={true}
         />
         <Input
@@ -63,8 +80,7 @@ const EditForm = () => {
           idProp="yearAdd"
           placeholderProp="Year..."
           labelProp="Year..."
-          valueInp={year}
-          setValueInp={setYear}
+          valueInp={car?.car_model_year}
           disabledProp={true}
         />
         <Input
@@ -79,7 +95,7 @@ const EditForm = () => {
           idProp="availability"
           labelProp="Available"
           isChecked={isAvailable}
-          setIsChecked={setIsAvailable}
+          setValueInp={setIsAvailable}
         />
         <button
           type="submit"

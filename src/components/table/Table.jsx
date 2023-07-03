@@ -4,7 +4,7 @@ import Modal from "../modals/Modal";
 import EditForm from "../modals/EditForm";
 import DeleteForm from "../modals/DeleteForm";
 
-const Table = ({ cars }) => {
+const Table = ({ cars, setCars }) => {
   const portionSize = 10;
   const [pageNum, setPageNum] = useState(portionSize);
   const [displayCars, setDisplayCars] = useState([]);
@@ -60,11 +60,11 @@ const Table = ({ cars }) => {
                 <td>
                   <Modal>
                     <span className="action">-Edit</span>
-                    <EditForm />
+                    <EditForm id={car.id} cars={cars} setCars={setCars} />
                   </Modal>
                   <Modal>
                     <span className="action">-Delete</span>
-                    <DeleteForm />
+                    <DeleteForm id={car.id} />
                   </Modal>
                 </td>
               </tr>
