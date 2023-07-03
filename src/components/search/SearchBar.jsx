@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import './SearchBar.css'
 import filterCars from "../../utils/filterCars";
 import loadCars from "../../utils/loadCars";
@@ -15,9 +15,10 @@ const SearchBar = ({ setCars }) => {
   const [priceFrom, setPriceFrom] = useState("");
   const [priceTo, setPriceTo] = useState("");
   const [isAvailable, setIsAvailable] = useState(false);
+  const [fetchedStateFlag, setFetchedStateFlag] = useState(false)
     
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const filterAndDisplayCars = () => {
+    console.log(isAvailable);
     loadCars().then((cars) => {
       const filteredCars = filterCars(
         cars,
@@ -33,7 +34,21 @@ const SearchBar = ({ setCars }) => {
       );
       setCars(filteredCars);
     });
+  }
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    filterAndDisplayCars();
+    sessionStorage.setItem("company", company);
+    sessionStorage.setItem("model", model);
+    sessionStorage.setItem("vin", vin);
+    sessionStorage.setItem("color", color);
+    sessionStorage.setItem("yearFrom", yearFrom);
+    sessionStorage.setItem("yearTo", yearTo);
+    sessionStorage.setItem("priceFrom", priceFrom);
+    sessionStorage.setItem("priceTo", priceTo);
+    sessionStorage.setItem("isAvailable", isAvailable);
   };
+
   const resetSearchBar = () => {
     setCompany("");
     setModel("");
@@ -47,7 +62,34 @@ const SearchBar = ({ setCars }) => {
     loadCars().then((cars) => {
       setCars(cars);
     });
+    sessionStorage.removeItem("company");
+    sessionStorage.removeItem("model", model);
+    sessionStorage.removeItem("vin", vin);
+    sessionStorage.removeItem("color", color);
+    sessionStorage.removeItem("yearFrom", yearFrom);
+    sessionStorage.removeItem("yearTo", yearTo);
+    sessionStorage.removeItem("priceFrom", priceFrom);
+    sessionStorage.removeItem("priceTo", priceTo);
+    sessionStorage.removeItem("isAvailable", isAvailable);
   }
+
+  useEffect(() => {
+    setCompany(sessionStorage.getItem("company") || "");
+    setModel(sessionStorage.getItem("model") || "");
+    setVin(sessionStorage.getItem("vin") || "");
+    setColor(sessionStorage.getItem("color") || "");
+    setYearFrom(sessionStorage.getItem("yearFrom") || "");
+    setYearTo(sessionStorage.getItem("yearTo") || "");
+    setPriceFrom(sessionStorage.getItem("priceFrom") || "");
+    setPriceTo(sessionStorage.getItem("priceTo") || "");
+    setIsAvailable(sessionStorage.getItem("isAvailable") === 'true');
+    setFetchedStateFlag(true);
+  }, [])
+
+  useEffect(() => {
+    filterAndDisplayCars();
+  }, [fetchedStateFlag]);
+
   return (
     <div className="searchbar-container">
       <form onSubmit={handleSubmit}>

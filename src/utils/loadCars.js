@@ -5,7 +5,22 @@ const fetchCars = async () => {
   try {
     const response = await axios.get("https://myfakeapi.com/api/cars/");
     if (response.status === 200 && response.data?.cars) {
-      return response.data.cars;
+      const carObject = response.data?.cars[0];
+      if (
+        carObject &&
+        carObject.hasOwnProperty("availability") &&
+        carObject.hasOwnProperty("car") &&
+        carObject.hasOwnProperty("car_color") &&
+        carObject.hasOwnProperty("car_model") &&
+        carObject.hasOwnProperty("car_model_year") &&
+        carObject.hasOwnProperty("car_vin") &&
+        carObject.hasOwnProperty("id") &&
+        carObject.hasOwnProperty("price")
+      ) {
+        return response.data.cars;
+      } else {
+        console.log("Object is not in the correct format");
+      }
     } else {
       console.log("Error: Invalid response from API");
     }

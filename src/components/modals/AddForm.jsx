@@ -11,7 +11,6 @@ const AddForm = ({ cars, setCars }) => {
   const [year, setYear] = useState("");
   const [price, setPrice] = useState("");
   const [isAvailable, setIsAvailable] = useState(false);
-  const [error, setError] = useState("")
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -41,7 +40,6 @@ const AddForm = ({ cars, setCars }) => {
   return (
     <div className="modal-form-container">
       <h2>Add a new car</h2>
-      <span>{error}</span>
       <form onSubmit={handleSubmit}>
         <Input
           idProp="companyAdd"
