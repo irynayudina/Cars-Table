@@ -2,7 +2,8 @@ import React, {useState} from 'react'
 import Input from '../inputs/Input';
 import InputCheckbox from '../inputs/InputCheckbox';
 import addCar from '../../utils/addCar';
-const AddForm = ({ setCars }) => {
+
+const AddForm = ({ cars, setCars }) => {
   const [company, setCompany] = useState("");
   const [model, setModel] = useState("");
   const [vin, setVin] = useState("");
@@ -14,6 +15,9 @@ const AddForm = ({ setCars }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     resetForm();
+    const updatedCars = addCar(cars, company, model, vin, color, year, price, isAvailable);
+    sessionStorage.setItem("cars", JSON.stringify(updatedCars));
+    setCars(updatedCars)
   };
   const resetForm = () => {
     setCompany("");

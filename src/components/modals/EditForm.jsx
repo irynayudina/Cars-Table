@@ -95,7 +95,7 @@ const EditForm = ({ id, cars, setCars }) => {
           idProp="availability"
           labelProp="Available"
           isChecked={isAvailable}
-          setValueInp={setIsAvailable}
+          setIsChecked={setIsAvailable}
         />
         <button
           type="submit"
