@@ -58,7 +58,10 @@ button:focus-visible {
   background-color: rgb(92, 255, 17);
   color: white;
 }
-
+.del-btn{
+  background-color: #DC3545;
+  color: white;
+}
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

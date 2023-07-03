@@ -1,7 +1,13 @@
 import React from "react";
 import "./Input.css";
 
-const InputCheckbox = ({ idProp, labelProp, isChecked, setIsChecked }) => {
+const InputCheckbox = ({
+  idProp,
+  labelProp,
+  isChecked,
+  setIsChecked,
+  disabledProp,
+}) => {
   const handleCheckboxChange = (event) => {
     setIsChecked(event.target.checked);
   };
@@ -12,6 +18,7 @@ const InputCheckbox = ({ idProp, labelProp, isChecked, setIsChecked }) => {
         id={idProp}
         checked={isChecked}
         onChange={handleCheckboxChange}
+        disabled={disabledProp}
       />
       <span>{labelProp}</span>
     </div>

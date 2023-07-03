@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Table.css";
 import Modal from "../modals/Modal";
 import EditForm from "../modals/EditForm";
+import DeleteForm from "../modals/DeleteForm";
 
 const Table = ({ cars }) => {
   const portionSize = 10;
@@ -63,7 +64,7 @@ const Table = ({ cars }) => {
                   </Modal>
                   <Modal>
                     <span className="action">-Delete</span>
-                    <div>delete</div>
+                    <DeleteForm />
                   </Modal>
                 </td>
               </tr>
