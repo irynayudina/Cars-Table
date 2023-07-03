@@ -8,6 +8,8 @@ const Input = ({
   valueInp,
   setValueInp,
   disabledProp,
+  isRequired,
+  minValue,
 }) => {
   const [filled, setFilled] = useState("");
 
@@ -36,6 +38,8 @@ const Input = ({
         value={valueInp}
         onChange={handleChange}
         disabled={disabledProp}
+        required={isRequired}
+        min={minValue}
       />
       <label htmlFor={idProp}>{labelProp}</label>
     </div>

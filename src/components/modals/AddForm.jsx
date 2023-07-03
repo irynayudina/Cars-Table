@@ -11,13 +11,23 @@ const AddForm = ({ cars, setCars }) => {
   const [year, setYear] = useState("");
   const [price, setPrice] = useState("");
   const [isAvailable, setIsAvailable] = useState(false);
+  const [error, setError] = useState("")
 
   const handleSubmit = (event) => {
     event.preventDefault();
     resetForm();
-    const updatedCars = addCar(cars, company, model, vin, color, year, price, isAvailable);
+    const updatedCars = addCar(
+      cars,
+      company,
+      model,
+      vin,
+      color,
+      year,
+      price,
+      isAvailable
+    );
     sessionStorage.setItem("cars", JSON.stringify(updatedCars));
-    setCars(updatedCars)
+    setCars(updatedCars);
   };
   const resetForm = () => {
     setCompany("");
@@ -31,6 +41,7 @@ const AddForm = ({ cars, setCars }) => {
   return (
     <div className="modal-form-container">
       <h2>Add a new car</h2>
+      <span>{error}</span>
       <form onSubmit={handleSubmit}>
         <Input
           idProp="companyAdd"
@@ -38,6 +49,7 @@ const AddForm = ({ cars, setCars }) => {
           labelProp="Company..."
           valueInp={company}
           setValueInp={setCompany}
+          isRequired={true}
         />
         <Input
           idProp="modelAdd"
@@ -45,6 +57,7 @@ const AddForm = ({ cars, setCars }) => {
           labelProp="Model..."
           valueInp={model}
           setValueInp={setModel}
+          isRequired={true}
         />
         <Input
           idProp="vinAdd"
@@ -52,6 +65,7 @@ const AddForm = ({ cars, setCars }) => {
           labelProp="VIN..."
           valueInp={vin}
           setValueInp={setVin}
+          isRequired={true}
         />
         <Input
           idProp="colorAdd"
@@ -59,22 +73,27 @@ const AddForm = ({ cars, setCars }) => {
           labelProp="Color..."
           valueInp={color}
           setValueInp={setColor}
+          isRequired={true}
         />
         <Input
           typeProp="number"
+          minValue={1}
           idProp="yearAdd"
           placeholderProp="Year..."
           labelProp="Year..."
           valueInp={year}
           setValueInp={setYear}
+          isRequired={true}
         />
         <Input
           typeProp="number"
+          minValue={1}
           idProp="priceAdd"
           placeholderProp="Price..."
           labelProp="Price..."
           valueInp={price}
           setValueInp={setPrice}
+          isRequired={true}
         />
         <InputCheckbox
           idProp="availabilityAdd"

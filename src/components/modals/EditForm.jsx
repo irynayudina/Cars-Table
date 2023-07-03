@@ -74,6 +74,7 @@ const EditForm = ({ id, cars, setCars }) => {
           labelProp="Color..."
           valueInp={color}
           setValueInp={setColor}
+          isRequired={true}
         />
         <Input
           typeProp="number"
@@ -85,11 +86,13 @@ const EditForm = ({ id, cars, setCars }) => {
         />
         <Input
           typeProp="number"
+          minValue={1}
           idProp="priceEdit"
           placeholderProp="Price..."
           labelProp="Price..."
           valueInp={price}
           setValueInp={setPrice}
+          isRequired={true}
         />
         <InputCheckbox
           idProp="availabilityEdit"
