@@ -77,7 +77,7 @@ const AddForm = ({ cars, setCars }) => {
           setValueInp={setPrice}
         />
         <InputCheckbox
-          idProp="availability"
+          idProp="availabilityAdd"
           labelProp="Available"
           isChecked={isAvailable}
           setIsChecked={setIsAvailable}

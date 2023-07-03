@@ -1,70 +1,87 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import Input from "../inputs/Input";
 import InputCheckbox from "../inputs/InputCheckbox";
+import deleteCar from "../../utils/deleteCar";
+import findCarById from "../../utils/findCarById";
 
-const DeleteForm = ({ id }) => {
+const DeleteForm = ({ cars, setCars, id }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
+    const updatedCars = deleteCar(cars, id);
+    sessionStorage.setItem("cars", JSON.stringify(updatedCars));
+    setCars(updatedCars);
   };
+
+  const [car, setCar] = useState({
+    price: "",
+    car_color: "",
+    availability: false,
+    car: "",
+    car_model: "",
+    car_vin: "",
+    car_model_year: "",
+  });
+
+  const loadCar = () => {
+    const foundCar = findCarById(cars, id);
+    setCar(foundCar);
+  };
+
+  useEffect(() => {
+    loadCar();
+  }, []);
+
   return (
     <div className="modal-form-container">
       <h2>Are you sure you want to delete this car?</h2>
       <form onSubmit={handleSubmit}>
         <Input
-          idProp="companyAdd"
+          idProp="companyDelete"
           placeholderProp="Company..."
           labelProp="Company..."
-          // valueInp={company}
-          // setValueInp={setCompany}
+          valueInp={car.car}
           disabledProp={true}
         />
         <Input
-          idProp="modelAdd"
+          idProp="modelDelete"
           placeholderProp="Model..."
           labelProp="Model..."
-          // valueInp={model}
-          // setValueInp={setModel}
+          valueInp={car.car_model}
           disabledProp={true}
         />
         <Input
-          idProp="vinAdd"
+          idProp="vinDelete"
           placeholderProp="VIN..."
           labelProp="VIN..."
-          // valueInp={vin}
-          // setValueInp={setVin}
+          valueInp={car.car_vin}
           disabledProp={true}
         />
         <Input
-          idProp="colorAdd"
+          idProp="colorDelete"
           placeholderProp="Color..."
           labelProp="Color..."
-          // valueInp={color}
-          // setValueInp={setColor}
+          valueInp={car.car_color}
           disabledProp={true}
         />
         <Input
           typeProp="number"
-          idProp="yearAdd"
+          idProp="yearDelete"
           placeholderProp="Year..."
           labelProp="Year..."
-          // valueInp={year}
-          // setValueInp={setYear}
+          valueInp={car.car_model_year}
           disabledProp={true}
         />
         <Input
-          typeProp="number"
-          idProp="priceAdd"
+          idProp="priceDelete"
           placeholderProp="Price..."
           labelProp="Price..."
-          // valueInp={price}
-          // setValueInp={setPrice}
+          valueInp={car.price}
           disabledProp={true}
         />
         <InputCheckbox
-          idProp="availability"
+          idProp="availabilityDelete"
           labelProp="Available"
-          // isChecked={isAvailable}
-          // setIsChecked={setIsAvailable}
+          isChecked={car.availability}
           disabledProp={true}
         />
         <button

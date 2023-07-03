@@ -48,28 +48,28 @@ const EditForm = ({ id, cars, setCars }) => {
       <h2>Edit car</h2>
       <form onSubmit={handleSubmit}>
         <Input
-          idProp="companyAdd"
+          idProp="companyEdit"
           placeholderProp="Company..."
           labelProp="Company..."
           valueInp={car?.car}
           disabledProp={true}
         />
         <Input
-          idProp="modelAdd"
+          idProp="modelEdit"
           placeholderProp="Model..."
           labelProp="Model..."
           valueInp={car?.car_model}
           disabledProp={true}
         />
         <Input
-          idProp="vinAdd"
+          idProp="vinEdit"
           placeholderProp="VIN..."
           labelProp="VIN..."
           valueInp={car?.car_vin}
           disabledProp={true}
         />
         <Input
-          idProp="colorAdd"
+          idProp="colorEdit"
           placeholderProp="Color..."
           labelProp="Color..."
           valueInp={color}
@@ -77,7 +77,7 @@ const EditForm = ({ id, cars, setCars }) => {
         />
         <Input
           typeProp="number"
-          idProp="yearAdd"
+          idProp="yearEdit"
           placeholderProp="Year..."
           labelProp="Year..."
           valueInp={car?.car_model_year}
@@ -85,14 +85,14 @@ const EditForm = ({ id, cars, setCars }) => {
         />
         <Input
           typeProp="number"
-          idProp="priceAdd"
+          idProp="priceEdit"
           placeholderProp="Price..."
           labelProp="Price..."
           valueInp={price}
           setValueInp={setPrice}
         />
         <InputCheckbox
-          idProp="availability"
+          idProp="availabilityEdit"
           labelProp="Available"
           isChecked={isAvailable}
           setIsChecked={setIsAvailable}

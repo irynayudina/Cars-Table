@@ -64,7 +64,7 @@ const Table = ({ cars, setCars }) => {
                   </Modal>
                   <Modal>
                     <span className="action">-Delete</span>
-                    <DeleteForm id={car.id} />
+                    <DeleteForm id={car.id} cars={cars} setCars={setCars} />
                   </Modal>
                 </td>
               </tr>
