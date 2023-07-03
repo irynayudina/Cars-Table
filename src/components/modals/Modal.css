@@ -48,12 +48,12 @@
     display: none;
 }
 
-.add-form-container{
+.modal-form-container{
   width: 270px;
 }
-.add-form-container .input-wrapper input{
+.modal-form-container .input-wrapper input{
   width: 270px;
 }
-.add-form-container input{
+.modal-form-container input{
   width: 270px;
 }

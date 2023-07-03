@@ -1,8 +1,7 @@
-import React, {useState} from 'react'
-import Input from '../inputs/Input';
-import InputCheckbox from '../inputs/InputCheckbox';
-import addCar from '../../utils/addCar';
-const AddForm = ({ setCars }) => {
+import React, { useState } from "react";
+import Input from "../inputs/Input";
+import InputCheckbox from "../inputs/InputCheckbox";
+const EditForm = () => {
   const [company, setCompany] = useState("");
   const [model, setModel] = useState("");
   const [vin, setVin] = useState("");
@@ -26,7 +25,7 @@ const AddForm = ({ setCars }) => {
   };
   return (
     <div className="modal-form-container">
-      <h2>Add a new car</h2>
+      <h2>Edit car</h2>
       <form onSubmit={handleSubmit}>
         <Input
           idProp="companyAdd"
@@ -34,6 +33,7 @@ const AddForm = ({ setCars }) => {
           labelProp="Company..."
           valueInp={company}
           setValueInp={setCompany}
+          disabledProp="true"
         />
         <Input
           idProp="modelAdd"
@@ -41,6 +41,7 @@ const AddForm = ({ setCars }) => {
           labelProp="Model..."
           valueInp={model}
           setValueInp={setModel}
+          disabledProp="true"
         />
         <Input
           idProp="vinAdd"
@@ -48,6 +49,7 @@ const AddForm = ({ setCars }) => {
           labelProp="VIN..."
           valueInp={vin}
           setValueInp={setVin}
+          disabledProp="true"
         />
         <Input
           idProp="colorAdd"
@@ -63,6 +65,7 @@ const AddForm = ({ setCars }) => {
           labelProp="Year..."
           valueInp={year}
           setValueInp={setYear}
+          disabledProp="true"
         />
         <Input
           typeProp="number"
@@ -83,11 +86,11 @@ const AddForm = ({ setCars }) => {
           className="add-btn"
           style={{ width: "100%", marginTop: "1rem" }}
         >
-          Add
+          Edit
         </button>
       </form>
     </div>
   );
 };
 
-export default AddForm
+export default EditForm;

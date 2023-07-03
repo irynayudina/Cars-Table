@@ -1,12 +1,13 @@
 import React, {useState, useEffect} from 'react'
 import './Input.css'
 const Input = ({
-  typeProp="text",
+  typeProp = "text",
   idProp,
   placeholderProp,
   labelProp,
   valueInp,
   setValueInp,
+  disabledProp,
 }) => {
   const [filled, setFilled] = useState("");
 
@@ -24,7 +25,7 @@ const Input = ({
       setFilled("");
     }
   }, [valueInp]);
-  
+
   return (
     <div className="input-wrapper">
       <input
@@ -34,6 +35,7 @@ const Input = ({
         className={filled}
         value={valueInp}
         onChange={handleChange}
+        disabled={disabledProp}
       />
       <label htmlFor={idProp}>{labelProp}</label>
     </div>
