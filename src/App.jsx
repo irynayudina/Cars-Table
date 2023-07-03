@@ -44,8 +44,8 @@ function App() {
           </div>
         </>
       )}
-      <p className="read-the-docs">Test task completed by Iryna Yudina</p>
-      <p className="read-the-docs">yudinaira4444@gmail.com</p>
+      <p className="footer-text">Test task completed by Iryna Yudina</p>
+      <p className="footer-text">yudinaira4444@gmail.com</p>
     </>
   );
 }

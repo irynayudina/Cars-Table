@@ -8,9 +8,11 @@ const filterCars = (
   yearTo,
   priceFrom,
   priceTo,
-  isAvailable
+  isAvailable,
+  orderBy,
+  sortOrder
 ) => {
-  const filteredCars = cars.filter((car) => {
+  let filteredCars = cars.filter((car) => {
     let isMatch = true;
 
     if (company) {
@@ -55,10 +57,12 @@ const filterCars = (
         console.error(err);
       }
     }
-    
+
     if (priceFrom) {
       try {
-        if (Number(car.price.replace(/[^0-9.-]+/g,"")) < parseFloat(priceFrom)) {
+        if (
+          Number(car.price.replace(/[^0-9.-]+/g, "")) < parseFloat(priceFrom)
+        ) {
           isMatch = false;
         }
       } catch (error) {
@@ -75,13 +79,32 @@ const filterCars = (
       }
     }
 
-    // car.availability.toString() - isAvailable.toString()
     if (isAvailable && !car.availability) {
       isMatch = false;
     }
 
     return isMatch;
   });
+
+  if (orderBy && sortOrder) {
+    filteredCars = filteredCars.sort((a, b) => {
+      let compareResult = 0;
+
+      if (orderBy === "price") {
+        const priceA = parseFloat(a.price.replace(/[^0-9.-]+/g, ""));
+        const priceB = parseFloat(b.price.replace(/[^0-9.-]+/g, ""));
+        compareResult = priceA - priceB;
+      } else if (orderBy === "year") {
+        compareResult = a.car_model_year - b.car_model_year;
+      }
+
+      if (sortOrder === "desc") {
+        compareResult *= -1;
+      }
+
+      return compareResult;
+    });
+  }
 
   return filteredCars;
 };

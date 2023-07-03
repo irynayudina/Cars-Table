@@ -1,4 +1,4 @@
-.popup {
+.modal {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -10,13 +10,7 @@
   border: 1px solid #646cff;
 }
 
-.popup__content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.popup-close {
+.modal-close {
   float: right;
   background-color: white;
   border-radius: 0.5rem;
@@ -31,7 +25,7 @@
   border: 1px solid transparent;
 }
 
-.popup-close:hover {
+.modal-close:hover {
   border: 1px solid #DC3545;
 }
 
@@ -43,9 +37,6 @@
   top: 0;
   left: 0;
   z-index: 9998;
-}
-.closePopup *{
-    display: none;
 }
 
 .modal-form-container{

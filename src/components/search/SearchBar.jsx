@@ -4,9 +4,10 @@ import filterCars from "../../utils/filterCars";
 import loadCars from "../../utils/loadCars";
 import Input from "../inputs/Input";
 import InputCheckbox from "../inputs/InputCheckbox";
+import InputSelect from "../inputs/InputSelect";
 
 const SearchBar = ({ setCars }) => {
-  const [company, setCompany] = useState("")
+  const [company, setCompany] = useState("");
   const [model, setModel] = useState("");
   const [vin, setVin] = useState("");
   const [color, setColor] = useState("");
@@ -15,8 +16,10 @@ const SearchBar = ({ setCars }) => {
   const [priceFrom, setPriceFrom] = useState("");
   const [priceTo, setPriceTo] = useState("");
   const [isAvailable, setIsAvailable] = useState(false);
-  const [fetchedStateFlag, setFetchedStateFlag] = useState(false)
-    
+  const [orderBy, setOrderBy] = useState("");
+  const [sortOrder, setSortOrder] = useState("");
+  const [fetchedStateFlag, setFetchedStateFlag] = useState(false);
+
   const filterAndDisplayCars = () => {
     console.log(isAvailable);
     loadCars().then((cars) => {
@@ -30,11 +33,13 @@ const SearchBar = ({ setCars }) => {
         yearTo,
         priceFrom,
         priceTo,
-        isAvailable
+        isAvailable,
+        orderBy,
+        sortOrder
       );
       setCars(filteredCars);
     });
-  }
+  };
   const handleSubmit = (event) => {
     event.preventDefault();
     filterAndDisplayCars();
@@ -71,7 +76,7 @@ const SearchBar = ({ setCars }) => {
     sessionStorage.removeItem("priceFrom", priceFrom);
     sessionStorage.removeItem("priceTo", priceTo);
     sessionStorage.removeItem("isAvailable", isAvailable);
-  }
+  };
 
   useEffect(() => {
     setCompany(sessionStorage.getItem("company") || "");
@@ -82,9 +87,9 @@ const SearchBar = ({ setCars }) => {
     setYearTo(sessionStorage.getItem("yearTo") || "");
     setPriceFrom(sessionStorage.getItem("priceFrom") || "");
     setPriceTo(sessionStorage.getItem("priceTo") || "");
-    setIsAvailable(sessionStorage.getItem("isAvailable") === 'true');
+    setIsAvailable(sessionStorage.getItem("isAvailable") === "true");
     setFetchedStateFlag(true);
-  }, [])
+  }, []);
 
   useEffect(() => {
     filterAndDisplayCars();
@@ -159,8 +164,20 @@ const SearchBar = ({ setCars }) => {
           isChecked={isAvailable}
           setIsChecked={setIsAvailable}
         />
+        <InputSelect value={orderBy} setValue={setOrderBy}>
+          <option value="">Sort By</option>
+          <option value="price">Price</option>
+          <option value="year">Year</option>
+        </InputSelect>
+        <InputSelect value={sortOrder} setValue={setSortOrder}>
+          <option value="">Sort Order</option>
+          <option value="asc">Ascending</option>
+          <option value="desc">Descending</option>
+        </InputSelect>
         <button type="submit">Search</button>
-        <button type="button" onClick={resetSearchBar}>Reset</button>
+        <button type="button" onClick={resetSearchBar}>
+          Reset
+        </button>
       </form>
     </div>
   );

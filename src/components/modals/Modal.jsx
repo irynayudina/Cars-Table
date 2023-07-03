@@ -5,28 +5,28 @@ const Modal = ({ children }) => {
   const trigger = childrenArray[0];
   const content = childrenArray[1];
 
-  const [showPopup, setShowPopup] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
-  const handleShowPopup = () => {
-    setShowPopup(true);
+  const handleShowModal = () => {
+    setShowModal(true);
   };
 
-  const handleClosePopup = () => {
-    setShowPopup(false);
+  const handleCloseModal = () => {
+    setShowModal(false);
   };
 
-  const popupRef = useRef();
+  const modalRef = useRef();
   const triggerRef = useRef();
 
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
-        popupRef.current &&
-        !popupRef.current.contains(event.target) &&
+        modalRef.current &&
+        !modalRef.current.contains(event.target) &&
         triggerRef.current &&
         !triggerRef.current.contains(event.target)
       ) {
-        handleClosePopup();
+        handleCloseModal();
       }
     };
 
@@ -35,23 +35,23 @@ const Modal = ({ children }) => {
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
-  }, [popupRef, triggerRef]);
+  }, [modalRef, triggerRef]);
   return (
     <div>
       <div
-        onClick={handleShowPopup}
+        onClick={handleShowModal}
         ref={triggerRef}
         style={{ display: "inline-block" }}
       >
         {trigger}
       </div>
-      {showPopup && (
+      {showModal && (
         <div className="blur">
-          <div className="popup" ref={popupRef}>
-            <div className="popup-close" onClick={handleClosePopup}>
+          <div className="modal" ref={modalRef}>
+            <div className="modal-close" onClick={handleCloseModal}>
               &#10060;
             </div>
-            {React.cloneElement(content, { onClose: handleClosePopup })}
+            {React.cloneElement(content, { onClose: handleCloseModal })}
           </div>
         </div>
       )}
