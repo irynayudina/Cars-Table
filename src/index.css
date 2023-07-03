@@ -58,9 +58,17 @@ button:focus-visible {
   background-color: rgb(92, 255, 17);
   color: white;
 }
+.add-btn:hover{
+  border-color: rgb(79, 222, 13);
+  background-color: rgb(79, 222, 13);
+}
 .del-btn{
   background-color: #DC3545;
   color: white;
+}
+.del-btn:hover{
+  border-color: #990312;
+  background-color: #990312;
 }
 @media (prefers-color-scheme: light) {
   :root {
